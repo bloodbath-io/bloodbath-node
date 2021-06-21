@@ -1,0 +1,30 @@
+{
+  "name": "bloodbath",
+  "version": "1.0.0",
+  "description": "Node.js wrapper for Bloodbath",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bloodbath-io/bloodbath-node.git"
+  },
+  "author": "Laurent Schaffner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bloodbath-io/bloodbath-node/issues"
+  },
+  "homepage": "https://github.com/bloodbath-io/bloodbath-node#readme",
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "chai": "^4.3.4",
+    "mocha": "^9.0.0",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
