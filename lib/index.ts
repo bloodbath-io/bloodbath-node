@@ -9,32 +9,32 @@ class Bloodbath {
   }
 
   scheduleEvent(params: object) {
-    return this.filterResponse(() => {
-      return instance(this.apiKey).post('/events', serializeParams(params))
-    })
+    return this.filterResponse(
+      instance(this.apiKey).post('/events', serializeParams(params))
+    )
   }
 
   listEvents() {
-    return this.filterResponse(() => {
-      return instance(this.apiKey).get('/events')
-    })
+    return this.filterResponse(
+      instance(this.apiKey).get('/events')
+    )
   }
 
   findEvent(id: string) {
-    return this.filterResponse(() => {
-      return instance(this.apiKey).get(`/events/${id}`)
-    })
+    return this.filterResponse(
+      instance(this.apiKey).get(`/events/${id}`)
+    )
   }
 
   async cancelEvent(id: string) {
-    return this.filterResponse(() => {
-      return instance(this.apiKey).delete(`/events/${id}`)
-    })
+    return this.filterResponse(
+      instance(this.apiKey).delete(`/events/${id}`)
+    )
   }
 
-  filterResponse(callback: () => Promise<any>) {
+  filterResponse(apiCall: Promise<any>) {
     return new Promise((resolve, reject) => {
-      callback().then((response: { data: object }) => {
+      apiCall.then((response: { data: object }) => {
         resolve(response.data)
       }).catch((error: { response: any }) => {
         reject(error.response.data)
