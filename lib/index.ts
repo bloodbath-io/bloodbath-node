@@ -1,4 +1,5 @@
 import { instance } from './resources/api'
+import { serializeParams } from './helpers/formats'
 
 class Bloodbath {
   apiKey: string
@@ -7,20 +8,38 @@ class Bloodbath {
     this.apiKey = apiKey
   }
 
-  async scheduleEvent(params: object) {
-    return await instance(this.apiKey).post('/events', params)
+  scheduleEvent(params: object) {
+    return this.filterResponse(() => {
+      return instance(this.apiKey).post('/events', serializeParams(params))
+    })
   }
 
-  async listEvents() {
-    return await instance(this.apiKey).get('/events')
+  listEvents() {
+    return this.filterResponse(() => {
+      return instance(this.apiKey).get('/events')
+    })
   }
 
-  async findEvent(id: string) {
-    return await instance(this.apiKey).get(`/events/${id}`)
+  findEvent(id: string) {
+    return this.filterResponse(() => {
+      return instance(this.apiKey).get(`/events/${id}`)
+    })
   }
 
   async cancelEvent(id: string) {
-    return instance(this.apiKey).delete(`/events/${id}`)
+    return this.filterResponse(() => {
+      return instance(this.apiKey).delete(`/events/${id}`)
+    })
+  }
+
+  filterResponse(callback: () => Promise<any>) {
+    return new Promise((resolve, reject) => {
+      callback().then((response: { data: object }) => {
+        resolve(response.data)
+      }).catch((error: { response: any }) => {
+        reject(error.response.data)
+      })
+    })
   }
 }
 

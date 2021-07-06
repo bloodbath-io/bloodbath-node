@@ -38,44 +38,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var api_1 = require("./resources/api");
+var formats_1 = require("./helpers/formats");
 var Bloodbath = /** @class */ (function () {
     function Bloodbath(apiKey) {
         this.apiKey = apiKey;
     }
     Bloodbath.prototype.scheduleEvent = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, api_1.instance(this.apiKey).post('/events', params)];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
+        var _this = this;
+        return this.filterResponse(function () {
+            return api_1.instance(_this.apiKey).post('/events', formats_1.serializeParams(params));
         });
     };
     Bloodbath.prototype.listEvents = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, api_1.instance(this.apiKey).get('/events')];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
+        var _this = this;
+        return this.filterResponse(function () {
+            return api_1.instance(_this.apiKey).get('/events');
         });
     };
     Bloodbath.prototype.findEvent = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, api_1.instance(this.apiKey).get("/events/" + id)];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
+        var _this = this;
+        return this.filterResponse(function () {
+            return api_1.instance(_this.apiKey).get("/events/" + id);
         });
     };
     Bloodbath.prototype.cancelEvent = function (id) {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, api_1.instance(this.apiKey).delete("/events/" + id)];
+                return [2 /*return*/, this.filterResponse(function () {
+                        return api_1.instance(_this.apiKey).delete("/events/" + id);
+                    })];
+            });
+        });
+    };
+    Bloodbath.prototype.filterResponse = function (callback) {
+        return new Promise(function (resolve, reject) {
+            callback().then(function (response) {
+                resolve(response.data);
+            }).catch(function (error) {
+                reject(error.response.data);
             });
         });
     };
