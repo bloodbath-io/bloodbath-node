@@ -26,7 +26,7 @@ class Bloodbath {
     )
   }
 
-  async cancelEvent(id: string) {
+  cancelEvent(id: string) {
     return this.filterResponse(
       instance(this.apiKey).delete(`/events/${id}`)
     )

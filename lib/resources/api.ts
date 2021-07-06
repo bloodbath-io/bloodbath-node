@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const DEFAULT_PATH = 'http://localhost:4000/rest/' // 'https://api.bloodbath.io/rest/'
+const DEFAULT_PATH = 'https://api.bloodbath.io/rest/'
 const TIMEOUT = 1000
 
 const baseURL = DEFAULT_PATH
