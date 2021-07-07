@@ -25,7 +25,7 @@ class httpAdapter {
     return this.processHttp(endPath, 'DELETE')
   }
 
-  processHttp(endPath: string, method: string, params: any | null = null) {
+  processHttp(endPath: string, method: string, params: string | null = null) {
     return new Promise((resolve, reject) => {
       const options = this.options(endPath, method, params)
       const request = https.request(options, (response: any) => {
@@ -40,7 +40,7 @@ class httpAdapter {
         });
       })
 
-      request.on('error', (error: any) => {
+      request.on('error', (error: object) => {
         reject(error)
       })
 
@@ -49,7 +49,7 @@ class httpAdapter {
     })
   }
 
-  options(endPath: string, method: string, params: any | null) {
+  options(endPath: string, method: string, params: string | null) {
     let headers = {'authorization': `Bearer ${this.apiKey}`}
     if (params) {
       headers = Object.assign(headers, {
