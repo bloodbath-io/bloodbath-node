@@ -42,7 +42,6 @@ class httpAdapter {
       })
 
       request.on('error', (error: object) => {
-        console.log('error output process http')
         reject(error)
       })
 

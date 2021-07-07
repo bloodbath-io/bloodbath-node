@@ -38,7 +38,6 @@ var httpAdapter = /** @class */ (function () {
                 });
             });
             request.on('error', function (error) {
-                console.log('error output process http');
                 reject(error);
             });
             if (params)

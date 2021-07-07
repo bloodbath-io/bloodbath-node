@@ -17,7 +17,6 @@ var Bloodbath = /** @class */ (function () {
         return this.filterResponse(api_1.instance(this.apiKey).get("/events/" + id));
     };
     Bloodbath.prototype.cancelEvent = function (id) {
-        console.log('cancelling');
         return this.filterResponse(api_1.instance(this.apiKey).delete("/events/" + id));
     };
     Bloodbath.prototype.filterResponse = function (apiCall) {
