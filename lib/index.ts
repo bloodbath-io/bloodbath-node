@@ -27,6 +27,7 @@ class Bloodbath {
   }
 
   cancelEvent(id: string) {
+    console.log('cancelling')
     return this.filterResponse(
       instance(this.apiKey).delete(`/events/${id}`)
     )

@@ -31,10 +31,14 @@ var httpAdapter = /** @class */ (function () {
                     data += chunk;
                 });
                 response.on('end', function () {
-                    resolve(JSON.parse(data));
+                    if (data)
+                        resolve(JSON.parse(data));
+                    else
+                        resolve(null);
                 });
             });
             request.on('error', function (error) {
+                console.log('error output process http');
                 reject(error);
             });
             if (params)

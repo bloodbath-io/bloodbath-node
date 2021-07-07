@@ -36,11 +36,13 @@ class httpAdapter {
         })
 
         response.on('end', () => {
-          resolve(JSON.parse(data))
+          if (data) resolve(JSON.parse(data))
+          else resolve(null)
         });
       })
 
       request.on('error', (error: object) => {
+        console.log('error output process http')
         reject(error)
       })
 
