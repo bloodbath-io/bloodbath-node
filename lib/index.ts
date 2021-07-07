@@ -1,5 +1,5 @@
 import { instance } from './resources/api'
-import { serializeParams } from './helpers/formats'
+import { serializeParams, deserializeParams } from './helpers/formats'
 
 class Bloodbath {
   apiKey: string
@@ -35,9 +35,9 @@ class Bloodbath {
   filterResponse(apiCall: Promise<any>) {
     return new Promise((resolve, reject) => {
       apiCall.then((response: { data: object }) => {
-        resolve(response.data)
+        resolve(deserializeParams(response))
       }).catch((error: { response: any }) => {
-        reject(error.response.data)
+        reject(error)
       })
     })
   }
