@@ -28,10 +28,12 @@ describe('Bloodbath', () => {
     const response = await instance.scheduleEvent({
       "headers": "{\"hello\": \"very-true|\"}",
       "endpoint": "http://api.random.com/v1",
-      "scheduledFor": "2022-06-26 00:27:23+0200",
+      "scheduledFor": Date.now() + 1000 * 60, // "2022-06-26 00:27:23+0200",
       "method": "post",
       "body": "test"
     })
+
+    console.log(response)
 
     expect(response.data).to.contain.keys('id', 'scheduledFor', 'headers', 'body', 'method')
 
@@ -63,11 +65,12 @@ describe('Bloodbath', () => {
   })
 
   it('should cancelEvent', async () => {
-    const id = '2a12efe7-3ae8-425f-81fe-148e59fdfa2c'
+    const id = '832199ee-675e-44a8-a974-f7b7e1067ea8'
 
     nock('https://api.bloodbath.io').delete(`/rest/events/${id}`).reply(200, { data: null })
 
     const response = await instance.cancelEvent(id)
+    console.log(response)
 
     expect(response.data).to.eq(null)
 
@@ -101,9 +104,10 @@ describe('Bloodbath', () => {
       }]
     })
     const response = await instance.listEvents()
+    console.log(response)
 
     expect(response.data).to.have.length.above(1)
 
-    //nock.cleanAll()
+    nock.cleanAll()
   })
 })

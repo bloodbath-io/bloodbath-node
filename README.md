@@ -25,8 +25,8 @@ const bloodbath = require('bloodbath')('NTI6PASMD9BQhYtRh...');
 bloodbath.scheduleEvent({
   ...
 })
-  .then(event => console.log(event.id))
-  .catch(error => console.error(error))
+.then(event => console.log(event.id))
+.catch(error => console.error(error))
 ```
 
 Or using ES modules and async/await:

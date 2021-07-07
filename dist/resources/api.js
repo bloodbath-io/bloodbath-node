@@ -1,8 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.instance = void 0;
-// import axios from 'axios'
-// axios.defaults.adapter = require('axios/lib/adapters/http')
 var https = require('https');
 var hostname = 'api.bloodbath.io';
 var port = 443;
