@@ -35,7 +35,7 @@ describe('Bloodbath', () => {
 
     console.log(response)
 
-    expect(response.data).to.contain.keys('id', 'scheduledFor', 'headers', 'body', 'method')
+    expect(response).to.contain.keys('id', 'scheduledFor', 'headers', 'body', 'method')
 
     nock.cleanAll()
   })
@@ -59,7 +59,7 @@ describe('Bloodbath', () => {
 
     const response = await instance.findEvent(id)
 
-    expect(response.data).to.contain.keys('id', 'scheduledFor', 'headers', 'body', 'method')
+    expect(response).to.contain.keys('id', 'scheduledFor', 'headers', 'body', 'method')
 
     nock.cleanAll()
   })
@@ -72,7 +72,7 @@ describe('Bloodbath', () => {
     const response = await instance.cancelEvent(id)
     console.log(response)
 
-    expect(response.data).to.eq(null)
+    expect(response).to.eq(null)
 
     nock.cleanAll()
   })
@@ -106,7 +106,7 @@ describe('Bloodbath', () => {
     const response = await instance.listEvents()
     console.log(response)
 
-    expect(response.data).to.have.length.above(1)
+    expect(response).to.have.length.above(1)
 
     nock.cleanAll()
   })
