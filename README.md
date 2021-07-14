@@ -75,5 +75,3 @@ Run all tests:
   $ npm install
   $ npm test
 ```
-
-If you do not have yarn installed, you can get it with `npm install --global yarn`.

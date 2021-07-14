@@ -22,7 +22,7 @@ var Bloodbath = /** @class */ (function () {
     Bloodbath.prototype.filterResponse = function (apiCall) {
         return new Promise(function (resolve, reject) {
             apiCall.then(function (response) {
-                resolve(formats_1.deserializeParams(response));
+                resolve(formats_1.deserializeParams(response.data));
             }).catch(function (error) {
                 reject(error);
             });

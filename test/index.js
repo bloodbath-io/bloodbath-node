@@ -28,7 +28,7 @@ describe('Bloodbath', () => {
     const response = await instance.scheduleEvent({
       "headers": "{\"hello\": \"very-true|\"}",
       "endpoint": "http://api.random.com/v1",
-      "scheduledFor": Date.now() + 1000 * 60, // "2022-06-26 00:27:23+0200",
+      "scheduledFor": Date.now() + 1000*60, // "2022-06-26 00:27:23+0200",
       "method": "post",
       "body": "test"
     })

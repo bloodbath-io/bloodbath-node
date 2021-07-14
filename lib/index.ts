@@ -35,7 +35,7 @@ class Bloodbath {
   filterResponse(apiCall: Promise<any>) {
     return new Promise((resolve, reject) => {
       apiCall.then((response: { data: object }) => {
-        resolve(deserializeParams(response))
+        resolve(deserializeParams(response.data))
       }).catch((error: { response: any }) => {
         reject(error)
       })
