@@ -65,7 +65,7 @@ Bloodbath.findEvent('b7ccff...')
 Bloodbath.cancelEvent('b7ccff...')
 ```
 
-For more documentation about how to use Bloodbath, don't hesitate to check [Bloodbath Docs](https://bloodbath.notion.site/Guide-00a3edc8f43b4528b2e34bf5eac5b0df).
+For more documentation about how to use Bloodbath, don't hesitate to check [Bloodbath Docs](https://docs.bloodbath.io).
 
 ## Development
 
