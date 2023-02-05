@@ -50,7 +50,7 @@ const bloodbath = new Bloodbath('NTI6PASMD9BQhYtRh...');
 Bloodbath.scheduleEvent({
   scheduledFor: Date.now() + 1000 * 60,
   headers: {},
-  method: :post,
+  method: "post",
   body: "some body content",
   endpoint: 'https://api.acme.com/path'
 })
